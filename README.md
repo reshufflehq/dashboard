@@ -1,11 +1,11 @@
-This is a [ShiftJS template](https://shiftjs.com/).
+[![CircleCI](https://circleci.com/gh/shiftjs/dashboard.svg?style=svg)](https://circleci.com/gh/shiftjs/dashboard)
 
-Counter is our very basic template. It displays a single number on screen
-and lets users increase that by huitting the "+1" button. Data is stored
-in a cloud backend, so the counter value persists even when the page is
-reloaded.
+Keywords: dashboard, classes, shiftjs, react-bootstrap, fullstack, promise, async, chartjs
 
-This template is implemented using React class components. A template based
-on React Hooks is also available.
+This is a [Reshuffle template](https://shiftjs.com/).
 
-\#counter \#noob \#class
+Dashboard is a basic template to demonstrate displaying data in a chart from 3 sources - frontend , backend and db.
+<br/>
+<br/>
+<br/>
+<img src="./app_screen.png" width="50%" height="50%">
