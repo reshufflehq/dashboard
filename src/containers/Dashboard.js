@@ -11,7 +11,7 @@ import {
   generateRemoteData,
   setStorageData,
   getStorageData,
-} from '../../backend/backend';
+} from '../../backend/dashboard-server';
 import { Display } from '../constants/enums';
 
 export default class Dashboard extends React.Component {
@@ -23,7 +23,7 @@ export default class Dashboard extends React.Component {
         datasets: [
           {
             label: 'My First dataset',
-            data: [150, 50, 100],
+            data: [100, 200, 300],
             backgroundColor: ['#FF6384', '#13bdd8', '#FFCE56'],
             hoverBackgroundColor: ['#FF6384', '#13bdd8', '#FFCE56'],
           },
@@ -105,6 +105,7 @@ export default class Dashboard extends React.Component {
     );
   }
 
+  /* Generate random chart data */
   generateLocalData() {
     const newdata = Object.assign({}, this.state.chart_data);
     newdata.datasets[0].data = [
@@ -116,6 +117,7 @@ export default class Dashboard extends React.Component {
     this.setState({ chart_data: newdata });
   }
 
+  /* Generate random chart data from backend*/
   async getRemoteData() {
     const newdata = Object.assign({}, this.state.chart_data);
     newdata.datasets[0].data = await generateRemoteData();
@@ -123,6 +125,7 @@ export default class Dashboard extends React.Component {
     this.setState({ chart_data: newdata });
   }
 
+  /* Fetch random chart data from db*/
   async fetchFromStorageData() {
     const newdata = Object.assign({}, this.state.chart_data);
     newdata.datasets[0].data = await getStorageData();
