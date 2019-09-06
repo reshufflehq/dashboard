@@ -1,6 +1,7 @@
-describe("Base React Application", () => {
-  it("Shows Learn React", () => {
-    cy.visit("/");
-    cy.contains('Learn React');
+/* eslint-disable no-undef */
+describe('Dashboard Application', () => {
+  it('Shows Dashboard app', () => {
+    cy.visit('/');
+    cy.contains('Dashboard');
   });
 });
