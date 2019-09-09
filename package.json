@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-chart",
+  "name": "dashboard",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
@@ -21,15 +21,17 @@
     "@binaris/shift-local-proxy": "0.2.0",
     "@binaris/shift-server-function": "0.0.2",
     "bootstrap": "^4.3.1",
-    "react-bootstrap": "^1.0.0-beta.12",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
     "primeicons": "^1.0.0",
     "primereact": "^3.1.7",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
     "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.9.0",
     "react-transition-group": "^4.2.1",
+    "shift-cli": "^0.2.0",
     "typescript": "^3.5.3"
   },
   "scripts": {
