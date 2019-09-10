@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/shiftjs/dashboard.svg?style=svg)](https://circleci.com/gh/shiftjs/dashboard)
+[![CircleCI](https://circleci.com/gh/reshufflehq/dashboard.svg?style=svg)](https://circleci.com/gh/reshufflehq/dashboard)
 
-Keywords: dashboard, classes, shiftjs, react-bootstrap, fullstack, promise, async, chartjs
+Keywords: dashboard, classes, reshuffle, react-bootstrap, fullstack, promise, async, chartjs
 
-This is a [Reshuffle template](https://shiftjs.com/).
+This is a [Reshuffle template](https://reshuffle.com/).
 
 Dashboard is a basic template to demonstrate displaying data in a chart from 3 sources - frontend , backend and db.
 <br/>
