@@ -71,7 +71,7 @@ export default class Dashboard extends React.Component {
           <Button
             variant='info'
             size='sm'
-            onClick={this.fetchFromStorageData}
+            onClick={this.fetchStoredData}
             style={{ margin: 10 }}
             active={this.state.display === Display.DB}
           >
@@ -126,7 +126,7 @@ export default class Dashboard extends React.Component {
   }
 
   /* Fetch random chart data from db*/
-  async fetchFromStorageData() {
+  async fetchStoredData() {
     const newdata = Object.assign({}, this.state.chartData);
     newdata.datasets[0].data = await getStoredData();
     this.setState({ display: Display.DB });
