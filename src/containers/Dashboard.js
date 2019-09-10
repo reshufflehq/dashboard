@@ -33,11 +33,10 @@ export default class Dashboard extends React.Component {
     };
     this.generateLocalData = this.generateLocalData.bind(this);
     this.getRemoteData = this.getRemoteData.bind(this);
-    this.fetchFromStorageData = this.fetchFromStorageData.bind(this);
-    this.initStorageData();
+    this.fetchStoredData = this.fetchStoredData.bind(this);
   }
 
-  initStorageData() {
+  componentDidMount() {
     initData(this.state.chartData.datasets[0].data);
   }
 
