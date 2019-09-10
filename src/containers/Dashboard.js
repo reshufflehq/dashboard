@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import {
   generateRemoteData,
   initData,
-  getData,
+  getStoredData,
 } from '../../backend/dashboard-server';
 import { Display } from '../constants/enums';
 
@@ -128,7 +128,7 @@ export default class Dashboard extends React.Component {
   /* Fetch random chart data from db*/
   async fetchFromStorageData() {
     const newdata = Object.assign({}, this.state.chart_data);
-    newdata.datasets[0].data = await getData();
+    newdata.datasets[0].data = await getStoredData();
     this.setState({ display: Display.DB });
     this.setState({ chart_data: newdata });
   }
