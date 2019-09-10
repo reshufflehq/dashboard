@@ -1,6 +1,6 @@
+import '@binaris/shift-code-transform/macro';
 import React from 'react';
 import { Chart } from 'primereact/chart';
-import '@binaris/shift-babel-macro/macro';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,7 +18,7 @@ export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chart_data: {
+      chartData: {
         labels: ['A', 'B', 'C'],
         datasets: [
           {
@@ -38,7 +38,7 @@ export default class Dashboard extends React.Component {
   }
 
   initStorageData() {
-    initData(this.state.chart_data.datasets[0].data);
+    initData(this.state.chartData.datasets[0].data);
   }
 
   render() {
@@ -80,25 +80,25 @@ export default class Dashboard extends React.Component {
         </Row>
         <Row style={{ marginBottom: 100 }}>
           <Col className='col-4'>
-            <Chart type='doughnut' data={this.state.chart_data} />
+            <Chart type='doughnut' data={this.state.chartData} />
           </Col>
           <Col className='col-4'>
-            <Chart type='pie' data={this.state.chart_data} />
+            <Chart type='pie' data={this.state.chartData} />
           </Col>
           <Col className='col-4'>
-            <Chart type='bar' data={this.state.chart_data} />
+            <Chart type='bar' data={this.state.chartData} />
           </Col>
         </Row>
 
         <Row>
           <Col className='col-4'>
-            <Chart type='line' data={this.state.chart_data} />
+            <Chart type='line' data={this.state.chartData} />
           </Col>
           <Col className='col-4'>
-            <Chart type='polarArea' data={this.state.chart_data} />
+            <Chart type='polarArea' data={this.state.chartData} />
           </Col>
           <Col className='col-4'>
-            <Chart type='horizontalBar' data={this.state.chart_data} />
+            <Chart type='horizontalBar' data={this.state.chartData} />
           </Col>
         </Row>
       </Container>
@@ -107,29 +107,29 @@ export default class Dashboard extends React.Component {
 
   /* Generate random chart data */
   generateLocalData() {
-    const newdata = Object.assign({}, this.state.chart_data);
+    const newdata = Object.assign({}, this.state.chartData);
     newdata.datasets[0].data = [
       Math.floor(Math.random() * 100 + 1),
       Math.floor(Math.random() * 100 + 1),
       Math.floor(Math.random() * 100 + 1),
     ];
     this.setState({ display: Display.FRONTEND });
-    this.setState({ chart_data: newdata });
+    this.setState({ chartData: newdata });
   }
 
   /* Generate random chart data from backend*/
   async getRemoteData() {
-    const newdata = Object.assign({}, this.state.chart_data);
+    const newdata = Object.assign({}, this.state.chartData);
     newdata.datasets[0].data = await generateRemoteData();
     this.setState({ display: Display.BACKEND });
-    this.setState({ chart_data: newdata });
+    this.setState({ chartData: newdata });
   }
 
   /* Fetch random chart data from db*/
   async fetchFromStorageData() {
-    const newdata = Object.assign({}, this.state.chart_data);
+    const newdata = Object.assign({}, this.state.chartData);
     newdata.datasets[0].data = await getStoredData();
     this.setState({ display: Display.DB });
-    this.setState({ chart_data: newdata });
+    this.setState({ chartData: newdata });
   }
 }
