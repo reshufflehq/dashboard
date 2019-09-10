@@ -23,6 +23,6 @@ export async function initData(data) {
   Fetch chart data from db
  */
 /* @expose */
-export async function getData() {
+export async function getStoredData() {
   return get('chartData');
 }
