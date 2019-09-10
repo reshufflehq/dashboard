@@ -1,5 +1,4 @@
-import { get, update } from '@binaris/shift-db';
-
+import { get, create } from '@binaris/shift-db';
 /*
   Generate random chart data
  */
@@ -16,14 +15,14 @@ export async function generateRemoteData() {
   Save chart data in db
  */
 /* @expose */
-export async function setStorageData(data) {
-  return await update('chartData', (prevData = []) => data);
+export async function initData(data) {
+  return create('chartData', data);
 }
 
 /*
   Fetch chart data from db
  */
 /* @expose */
-export async function getStorageData() {
-  return await get('chartData');
+export async function getData() {
+  return get('chartData');
 }
