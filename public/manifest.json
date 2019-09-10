@@ -1,10 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Counter Application Using React Class Components",
-  "tags": [
-    "react-class",
-    "beginner-level"
-  ],
+  "short_name": "Dashboard App",
+  "name": "Dashboard Application Using React Class Components",
+  "tags": ["react-class"],
   "icons": [
     {
       "src": "favicon.ico",
