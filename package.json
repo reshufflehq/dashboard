@@ -13,7 +13,6 @@
     "async"
   ],
   "dependencies": {
-    "@binaris/shift-babel-macro": "0.0.5",
     "@binaris/shift-code-transform": "0.0.2",
     "@binaris/shift-db": "0.5.0",
     "@binaris/shift-fetch-runtime": "0.0.4",
