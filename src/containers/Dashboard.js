@@ -127,7 +127,7 @@ export default class Dashboard extends React.Component {
     );
   }
 
-  /* Generate random chart data */
+  /** Generate random chart data */
   generateLocalData() {
     this.setState({ display: Display.LOADING });
     const randomData = [
@@ -144,7 +144,7 @@ export default class Dashboard extends React.Component {
     this.setState({ chartData: newData });
   }
 
-  /* Generate random chart data from backend*/
+  /** Generate random chart data from backend*/
   async getRemoteData() {
     try {
       this.setState({ display: Display.LOADING });
@@ -161,7 +161,7 @@ export default class Dashboard extends React.Component {
     }
   }
 
-  /* Fetch random chart data from db*/
+  /** Fetch random chart data from db*/
   async fetchStoredData() {
     try {
       this.setState({ display: Display.LOADING });
