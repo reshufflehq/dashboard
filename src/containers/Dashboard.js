@@ -140,8 +140,7 @@ export default class Dashboard extends React.Component {
       datasets: [{ ...this.state.chartData.datasets[0], data: randomData }],
     };
 
-    this.setState({ display: Display.FRONTEND });
-    this.setState({ chartData: newData });
+    this.setState({ display: Display.FRONTEND, chartData: newData });
   }
 
   /** Generate random chart data from backend*/
@@ -154,8 +153,7 @@ export default class Dashboard extends React.Component {
         datasets: [{ ...this.state.chartData.datasets[0], data: serverData }],
       };
 
-      this.setState({ display: Display.BACKEND });
-      this.setState({ chartData: newData });
+      this.setState({ display: Display.BACKEND, chartData: newData });
     } catch (err) {
       this.setState({ display: Display.ERROR });
     }
@@ -170,8 +168,7 @@ export default class Dashboard extends React.Component {
         ...this.state.chartData,
         datasets: [{ ...this.state.chartData.datasets[0], data: storedData }],
       };
-      this.setState({ display: Display.DB });
-      this.setState({ chartData: newData });
+      this.setState({ display: Display.DB, chartData: newData });
     } catch (err) {
       this.setState({ display: Display.ERROR });
     }
