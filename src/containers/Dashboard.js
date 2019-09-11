@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 
 import {
   generateRemoteData,
@@ -41,6 +43,15 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
+    const showError =
+      this.state.display === Display.ERROR ? 'visible' : 'invisible';
+    const showLoading =
+      this.state.display === Display.LOADING ? 'visible' : 'invisible';
+    const showDashboard =
+      this.state.display === Display.LOADING ||
+      this.state.display === Display.ERROR
+        ? 'none'
+        : 'block';
     return (
       <Container>
         <Row className='justify-content-center mt-5'>
@@ -77,29 +88,37 @@ export default class Dashboard extends React.Component {
             Fetch data from database
           </Button>
         </Row>
-        <Row style={{ marginBottom: 100 }}>
-          <Col className='col-4'>
-            <Chart type='doughnut' data={this.state.chartData} />
-          </Col>
-          <Col className='col-4'>
-            <Chart type='pie' data={this.state.chartData} />
-          </Col>
-          <Col className='col-4'>
-            <Chart type='bar' data={this.state.chartData} />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col className='col-4'>
-            <Chart type='line' data={this.state.chartData} />
-          </Col>
-          <Col className='col-4'>
-            <Chart type='polarArea' data={this.state.chartData} />
-          </Col>
-          <Col className='col-4'>
-            <Chart type='horizontalBar' data={this.state.chartData} />
-          </Col>
-        </Row>
+        <Container style={{ display: showDashboard }}>
+          <Row style={{ marginBottom: 100 }}>
+            <Col className='col-4'>
+              <Chart type='doughnut' data={this.state.chartData} />
+            </Col>
+            <Col className='col-4'>
+              <Chart type='pie' data={this.state.chartData} />
+            </Col>
+            <Col className='col-4'>
+              <Chart type='bar' data={this.state.chartData} />
+            </Col>
+          </Row>
+          <Row>
+            <Col className='col-4'>
+              <Chart type='line' data={this.state.chartData} />
+            </Col>
+            <Col className='col-4'>
+              <Chart type='polarArea' data={this.state.chartData} />
+            </Col>
+            <Col className='col-4'>
+              <Chart type='horizontalBar' data={this.state.chartData} />
+            </Col>
+          </Row>
+        </Container>
+        <Container className={showError}>
+          <Alert variant='danger'>Oh snap! You got an error!</Alert>
+        </Container>
+        <Container fluid className={showLoading}>
+          <Spinner animation='border' variant='info' className='mr-2' />
+          <span className='pl-1'>Loading...</span>
+        </Container>
       </Container>
     );
   }
@@ -118,17 +137,27 @@ export default class Dashboard extends React.Component {
 
   /* Generate random chart data from backend*/
   async getRemoteData() {
-    const newdata = Object.assign({}, this.state.chartData);
-    newdata.datasets[0].data = await generateRemoteData();
-    this.setState({ display: Display.BACKEND });
-    this.setState({ chartData: newdata });
+    try {
+      this.setState({ display: Display.LOADING });
+      const newdata = Object.assign({}, this.state.chartData);
+      newdata.datasets[0].data = await generateRemoteData();
+      this.setState({ display: Display.BACKEND });
+      this.setState({ chartData: newdata });
+    } catch (err) {
+      this.setState({ display: Display.ERROR });
+    }
   }
 
   /* Fetch random chart data from db*/
   async fetchStoredData() {
-    const newdata = Object.assign({}, this.state.chartData);
-    newdata.datasets[0].data = await getStoredData();
-    this.setState({ display: Display.DB });
-    this.setState({ chartData: newdata });
+    try {
+      this.setState({ display: Display.LOADING });
+      const newdata = Object.assign({}, this.state.chartData);
+      newdata.datasets[0].data = await getStoredData();
+      this.setState({ display: Display.DB });
+      this.setState({ chartData: newdata });
+    } catch (err) {
+      this.setState({ display: Display.ERROR });
+    }
   }
 }
