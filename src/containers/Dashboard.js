@@ -129,24 +129,33 @@ export default class Dashboard extends React.Component {
 
   /* Generate random chart data */
   generateLocalData() {
-    const newdata = Object.assign({}, this.state.chartData);
-    newdata.datasets[0].data = [
+    this.setState({ display: Display.LOADING });
+    const randomData = [
       Math.floor(Math.random() * 100 + 1),
       Math.floor(Math.random() * 100 + 1),
       Math.floor(Math.random() * 100 + 1),
     ];
+    const newData = {
+      ...this.state.chartData,
+      datasets: [{ ...this.state.chartData.datasets[0], data: randomData }],
+    };
+
     this.setState({ display: Display.FRONTEND });
-    this.setState({ chartData: newdata });
+    this.setState({ chartData: newData });
   }
 
   /* Generate random chart data from backend*/
   async getRemoteData() {
     try {
       this.setState({ display: Display.LOADING });
-      const newdata = Object.assign({}, this.state.chartData);
-      newdata.datasets[0].data = await generateRemoteData();
+      const serverData = await generateRemoteData();
+      const newData = {
+        ...this.state.chartData,
+        datasets: [{ ...this.state.chartData.datasets[0], data: serverData }],
+      };
+
       this.setState({ display: Display.BACKEND });
-      this.setState({ chartData: newdata });
+      this.setState({ chartData: newData });
     } catch (err) {
       this.setState({ display: Display.ERROR });
     }
@@ -156,10 +165,13 @@ export default class Dashboard extends React.Component {
   async fetchStoredData() {
     try {
       this.setState({ display: Display.LOADING });
-      const newdata = Object.assign({}, this.state.chartData);
-      newdata.datasets[0].data = await getStoredData();
+      const storedData = await getStoredData();
+      const newData = {
+        ...this.state.chartData,
+        datasets: [{ ...this.state.chartData.datasets[0], data: storedData }],
+      };
       this.setState({ display: Display.DB });
-      this.setState({ chartData: newdata });
+      this.setState({ chartData: newData });
     } catch (err) {
       this.setState({ display: Display.ERROR });
     }
