@@ -39,7 +39,11 @@ export default class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    initData(this.state.chartData.datasets[0].data);
+    try {
+      initData(this.state.chartData.datasets[0].data);
+    } catch (err) {
+      console.log('Error initializing data to DB');
+    }
   }
 
   render() {
