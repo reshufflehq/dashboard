@@ -13,11 +13,11 @@
     "async"
   ],
   "dependencies": {
-    "@binaris/shift-code-transform": "0.0.2",
-    "@binaris/shift-db": "0.5.0",
-    "@binaris/shift-fetch-runtime": "0.0.4",
-    "@binaris/shift-local-proxy": "0.2.0",
-    "@binaris/shift-server-function": "0.0.2",
+    "@reshuffle/code-transform": "^0.0.3",
+    "@reshuffle/db": "^0.5.1",
+    "@reshuffle/fetch-runtime": "^0.0.5",
+    "@reshuffle/local-proxy": "^0.2.6",
+    "@reshuffle/server-function": "^0.0.6",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",

@@ -1,4 +1,4 @@
-import { get, create } from '@binaris/shift-db';
+import { get, create } from '@reshuffle/db';
 /** Generate random chart data */
 /* @expose */
 export async function generateRemoteData() {
