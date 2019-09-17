@@ -2,7 +2,7 @@
 
 Keywords: dashboard, classes, reshuffle, react-bootstrap, fullstack, promise, async, chartjs
 
-This is a [Reshuffle template](https://reshuffle.com/).
+This is a [Reshuffle](https://reshuffle.com/) template.
 
 Dashboard is a basic template to demonstrate displaying data in a chart from 3 sources - frontend , backend and db.
 <br/>
