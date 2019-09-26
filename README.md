@@ -8,4 +8,4 @@ Dashboard is a basic template to demonstrate displaying data in a chart from 3 s
 <br/>
 <br/>
 <br/>
-<img src="./app_screen.png" width="50%" height="50%">
+<img src="./app-screen.png" width="50%" height="50%">
