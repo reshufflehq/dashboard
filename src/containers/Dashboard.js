@@ -56,6 +56,7 @@ export default class Dashboard extends React.Component {
       this.state.display === Display.ERROR
         ? 'none'
         : 'block';
+    const chartOptions = { responsive: true, maintainAspectRatio: false };
     return (
       <Container>
         <Row className='justify-content-center mt-5'>
@@ -95,24 +96,48 @@ export default class Dashboard extends React.Component {
         <Container style={{ display: showDashboard }}>
           <Row style={{ marginBottom: 100 }}>
             <Col className='col-4'>
-              <Chart type='doughnut' data={this.state.chartData} />
+              <Chart
+                options={chartOptions}
+                type='doughnut'
+                data={this.state.chartData}
+              />
             </Col>
             <Col className='col-4'>
-              <Chart type='pie' data={this.state.chartData} />
+              <Chart
+                type='pie'
+                data={this.state.chartData}
+                options={chartOptions}
+              />
             </Col>
             <Col className='col-4'>
-              <Chart type='bar' data={this.state.chartData} />
+              <Chart
+                type='bar'
+                data={this.state.chartData}
+                options={chartOptions}
+              />
             </Col>
           </Row>
           <Row>
             <Col className='col-4'>
-              <Chart type='line' data={this.state.chartData} />
+              <Chart
+                type='line'
+                data={this.state.chartData}
+                options={chartOptions}
+              />
             </Col>
             <Col className='col-4'>
-              <Chart type='polarArea' data={this.state.chartData} />
+              <Chart
+                type='polarArea'
+                data={this.state.chartData}
+                options={chartOptions}
+              />
             </Col>
             <Col className='col-4'>
-              <Chart type='horizontalBar' data={this.state.chartData} />
+              <Chart
+                type='horizontalBar'
+                data={this.state.chartData}
+                options={chartOptions}
+              />
             </Col>
           </Row>
         </Container>
